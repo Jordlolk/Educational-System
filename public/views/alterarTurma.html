@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu Station</title>
+    <link rel="stylesheet" href="../css/inicialHeader.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/form.css">
+</head>
+<body>
+    <header class="mainHeader">
+        <h2>Edu Station</h2>
+        <div data-menu="menu">
+            <h1>Direção Workship</h1>
+            <img class="img" src="../imgs/perfilIcon.png" alt="ícone de perfil" id="profileIcon">
+        </div>
+    </header>
+    <main>
+        <section class="disciContent">
+            <form action="" class="form">
+                <h3>Alterar Turma</h3>
+                <label for="nomeDisci" id="turma">
+                    Nome da turma <input placeholder="Nome da turma" name="turma" type="text" id="nomeDisci">
+                </label>
+                <label for="anoTurmaInput" id="anoDaTurma">
+                    Ano da turma <input placeholder="Ano da turma" name="anoDaTurma" type="text" id="anoTurmaInput">
+                </label>
+                <label for="turmaDataInput" id="turmaData">
+                    Data da criação <input name="turmaData" type="date" id="turmaDataInput">
+                </label>
+                <div class="vinculation">
+                    <button>Vincular Docentes</button>
+                    <button>Vincular Alunos</button>
+                </div>
+                <button type="submit">Alterar</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

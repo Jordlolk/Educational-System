@@ -1,0 +1,116 @@
+.disciContent {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4em;
+  background-color: rgb(83, 83, 83);
+  box-shadow: 8px 8px 1px black;
+  border: var(--borderColors) 4px solid;
+  border-radius: 18px;
+  padding: 28px;
+  width: 100%;
+  max-width: 28em;
+  min-width: 19em;
+  position: relative;
+}
+
+.form {
+  display: flex;
+  align-content: center;
+  gap: 2em;
+  label {
+    width: 100%;
+    color: var(--texts);
+    font-size: 1.2em;
+  }
+  button {
+    color: var(--linksColors);
+    background-color: var(--backgroundButtons);
+    border-radius: 8px;
+    border: none;
+    box-shadow: 2px 2px 1px var(--borderColors);
+    padding: 0.8em;
+    max-width: 10em;
+    min-width: 8em;
+  }
+}
+
+.form button:hover {
+  box-shadow: 0px 0px 1px rgb(0, 0, 0);
+}
+
+.form h3 {
+  background-color: rgb(83, 83, 83);
+  padding: 0px 4px 0px;
+  position: absolute;
+  top: -1.8em;
+  left: 1em;
+}
+
+.form input {
+  background-color: var(--backgroundInput);
+  outline: none;
+  padding: 8px;
+  border-radius: 12px;
+  color: var(--linksColors);
+  border: solid 2px white;
+  box-shadow: 0px 4px 1px black;
+  transition: 400ms ease-in-out;
+  width: 100%;
+}
+
+.form input::placeholder {
+  color: rgb(255, 255, 255);
+  opacity: 0.7;
+}
+
+.form input:focus {
+  background-color: rgb(255, 245, 245);
+  color: var(--texts);
+}
+
+.form input:focus::placeholder {
+  color: var(--texts);
+}
+
+.form input:hover {
+  box-shadow: 0px 0px 12px rgb(255, 255, 255);
+}
+
+.vinculation {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.gerarSenha {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  p {
+    font-size: 1.2em;
+  }
+  a {
+    display: block;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 4px 2px 1px var(--linksColors);
+    color: var(--linksColors);
+    background-color: var(--backgroundButtons);
+    padding: 8px;
+    border-radius: 13px;
+  }
+}
+
+@media (max-width: 700px) {
+  .gerarSenha {
+    flex-direction: column;
+  }
+}

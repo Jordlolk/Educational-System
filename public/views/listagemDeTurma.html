@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu Station</title>
+    <link rel="stylesheet" href="../css/inicialHeader.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/tabelaPrincipal.css">
+</head>
+<body>
+    <header class="mainHeader">
+        <h2>Edu Station</h2>
+        <div data-menu="menu">
+            <h1>Direção Workship</h1>
+            <img class="img" src="../imgs/perfilIcon.png" alt="ícone de perfil" id="profileIcon">
+        </div>
+    </header>
+    <main class="mainContent">
+        <section>
+            <div class="mainTitle">
+                <h2>Turma</h2>
+                <img src="../imgs/addIcon.png" alt="sumIcon">
+            </div>
+            <div class="divSearch">
+                <label for="nomeTurma">
+                    Digite o nome: <input type="text" placeholder="Text..." id="nomeTurma">
+                </label>
+                <button>Pesquisar</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Ano</th>
+                        <th>Data de criação</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NOME</td>
+                        <td>ANO</td>
+                        <td>DATA</td>
+                        <td>
+                            <button id="openDocente" class="btn-ver">Ver Docente</button>
+                            <button id="openAlunos" class="btn-ver">Ver Alunos</button>
+                            <button class="btn-alterar">Alterar</button>
+                            <button class="btn-excluir">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NOME</td>
+                        <td>ANO</td>
+                        <td>DATA</td>
+                        <td>
+                            <button id="openDocente" class="btn-ver">Ver Docente</button>
+                            <button id="openAlunos" class="btn-ver">Ver Alunos</button>
+                            <button class="btn-alterar">Alterar</button>
+                            <button class="btn-excluir">Excluir</button>
+                        </td>
+                    </tr>
+                    <!-- Adicione mais linhas conforme necessário -->
+                </tbody>
+            </table>
+        </section>
+        <article class="jsTables" id="tableDocentes">
+            <h3>Docentes</h3>
+            <div>
+                <p>TURMA X - Y ANO</p>
+                <ul class="jsTablesUl">
+                    <li>Matemática/ Arnaldo</li>
+                    <li>Português/ Liedro</li>
+                    <li>Física/ Athos</li>
+                    <li>Inglês/ Isaac</li>
+                    <li>Espanhol/ Louis</li>
+                    <li>Artes/ Tega</li>
+                    <li>História/ Hernesto</li>
+                </ul>
+            </div>
+            <button id="exitTableDocente">Sair</button>
+        </article>
+        <article class="jsTables" id="tableAlunos">
+            <h3>Alunos matriculados</h3>
+            <div>
+                <p>TURMA X - Y ANO</p>
+                <table class="jsTablestable">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data de nascimento</th>
+                            <th>CPF</th>
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NOME</td>
+                            <td>CPF</td>
+                            <td>DATA</td>
+                            <td>
+                                <button class="btn-alterarJs">Alterar</button>
+                                <button class="btn-excluirJs">Excluir</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>NOME</td>
+                            <td>CPF</td>
+                            <td>DATA</td>
+                            <td>
+                                <button class="btn-alterarJs">Alterar</button>
+                                <button class="btn-excluirJs">Excluir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button id="exitTableAluno">Sair</button>
+        </article>
+    </main>
+    <script src="../js/floatingTables.js"></script>
+    <script src="../js/profileIconEvent.js"></script>
+</body>
+</html>

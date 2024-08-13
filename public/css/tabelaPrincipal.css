@@ -1,0 +1,251 @@
+.mainContent section {
+  margin-top: 8em;
+  gap: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainTitle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  border-bottom: 2px solid;
+  width: 100%;
+}
+
+.mainTitle img {
+  display: block;
+  cursor: pointer;
+  height: auto;
+  width: 40px;
+}
+
+.divSearch {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.divSearch label {
+  display: flex;
+  gap: 0.4em;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+.divSearch input {
+  max-width: 300px;
+  min-width: 300px;
+  padding: 4px;
+  outline: none;
+  background-color: var(--linksColors);
+  border: 2px solid;
+  border-radius: 8px;
+  transition: 400ms ease-in-out;
+}
+
+.divSearch input::placeholder {
+  color: rgb(67, 67, 67);
+  opacity: 1;
+}
+
+.divSearch button {
+  color: var(--linksColors);
+  background-color: var(--backgroundButtons);
+  border-radius: 8px;
+  border: none;
+  box-shadow: 2px 2px 1px var(--borderColors);
+  padding: 0.8em;
+  max-width: 10em;
+  min-width: 8em;
+}
+
+.divSearch button:hover {
+  box-shadow: 0px 0px 1px rgb(0, 0, 0);
+}
+
+/*
+ TD - LINHAS DA TABELA , TH - CABEÇA DAS COLUNAS, TR - COLUNAS 
+*/
+table {
+  margin: auto;
+  border-collapse: collapse;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+}
+
+td {
+  color: var(--linksColors);
+}
+
+td:nth-child(1),
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4) {
+  text-align: center;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-left: 2px solid #000000;
+  border-top: 2px solid #000000;
+  border-right: 2px solid #000000;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+/* Botões das tabelas */
+.btn-alterar,
+.btn-excluir,
+.btn-ver {
+  font-weight: bolder;
+}
+.btn-ver {
+  background-color: var(--backgroundButtons);
+}
+
+.btn-alterar,
+.jsTables .btn-alterarJs {
+  margin-top: 0em;
+  background-color: #006d04;
+  border: none;
+}
+
+.btn-excluir,
+.jsTables .btn-excluirJs {
+  margin-top: 0em;
+  border: none;
+  background-color: #af0c00;
+}
+
+.jsTables .btn-alterarJs:hover,
+.jsTables .btn-excluirJs:hover {
+  box-shadow: none;
+}
+/* 
+  Mobile design
+*/
+@media (max-width: 740px) {
+  .divSearch {
+    flex-direction: column;
+  }
+  .divSearch label {
+    flex-direction: column;
+    gap: 0.4em;
+  }
+}
+
+.jsTables {
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+  margin-top: 4em;
+  border: 4px solid;
+  background-color: #e1e1e1cb;
+  display: none;
+}
+
+.jsTables p {
+  font-weight: bolder;
+}
+
+.jsTables h3 {
+  border-bottom: 2px solid;
+  border-image: linear-gradient(
+      to right,
+      transparent,
+      black 20%,
+      black 80%,
+      transparent
+    )
+    1;
+}
+
+.jsTables .jsTablesUl {
+  height: 188px;
+  border: 2px solid;
+  overflow-y: auto;
+  font-weight: bold;
+}
+
+.jsTables .jsTablesUl li {
+  cursor: pointer;
+  padding: 12px;
+  border-bottom: 2px solid;
+}
+.jsTables .jsTablesUl li:hover {
+  background-color: hsl(106, 100%, 50%);
+}
+
+.jsTables .jsTablesUl li:last-child {
+  border: none;
+}
+
+.jsTables button {
+  margin-top: 2em;
+  color: var(--linksColors);
+  background-color: var(--backgroundButtons);
+  border-radius: 8px;
+  border: 2px rgb(0, 255, 0) solid;
+  padding: 0.6em;
+  max-width: 10em;
+  min-width: 8em;
+  box-shadow: none;
+  transition: box-shadow 0.8s ease-in-out;
+}
+
+.jsTables button:hover {
+  box-shadow: 0px 0px 17px rgb(0, 114, 0);
+}
+
+.jsTablesUl::-webkit-scrollbar {
+  background-color: rgb(0, 0, 0);
+}
+
+/* Parte que desliza */
+.jsTablesUl::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 255, 8); /* Cor da "pegada" da barra */
+  border-radius: 0px; /* Bordas arredondadas */
+}
+
+/* Barra de rolagem no hover */
+.jsTablesUl::-webkit-scrollbar-thumb:hover {
+  /* Cor da "pegada" ao passar o mouse */
+  background-color: rgb(16, 16, 7);
+}
+
+.jsTables:last-child {
+  max-width: 800px;
+  display: none;
+}
+
+.jsTables table {
+  width: 100%;
+}
+
+.jsTables td {
+  font-weight: bold;
+  color: var(--texts);
+}

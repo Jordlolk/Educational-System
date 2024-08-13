@@ -1,0 +1,17 @@
+.mainHeader {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(236, 236, 236);
+  border-bottom: 4px black solid;
+  margin: -8px;
+  h2 {
+    margin: 0;
+    padding: 8px;
+  }
+}
+
+.mainHeader div {
+  margin-top: -2em;
+  flex-grow: 1;
+  text-align: center;
+}

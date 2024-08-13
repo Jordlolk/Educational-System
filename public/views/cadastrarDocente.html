@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu Station</title>
+    <link rel="stylesheet" href="../css/inicialHeader.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/form.css">
+</head>
+<body>
+    <header class="mainHeader">
+        <h2>Edu Station</h2>
+        <div data-menu="menu">
+            <h1>Direção Workship</h1>
+            <img class="img" src="../imgs/perfilIcon.png" alt="ícone de perfil" id="profileIcon">
+        </div>
+    </header>
+    <main>
+        <section class="disciContent">
+            <form action="" class="form">
+                <h3>Cadastrar Docente</h3>
+                <label for="nomeDocente" id="docente">
+                    Nome da Docente <input placeholder="Nome do Docente" name="Docente" type="text" id="nomeDocente">
+                </label>
+                <label for="cpfDirecaoInput" id="direcaocpf">
+                    CPF <input placeholder="CPF..." name="direcaocpf" type="text" id="cpfDirecaoInput">
+                </label>
+                <label for="dataDirecaoInput" id="dataDirecao">
+                    Data da Direção <input name="dataDirecao" type="date" id="dataDirecaoInput">
+                </label>
+                <label for="emailDirecaoInput" id="emailDirecao">
+                    E-mail <input type="text" id="emailDirecaoInput" name="emailDirecao" placeholder="E-mail...">
+                </label>
+                <div class="gerarSenha">
+                    <p>Senha temporária</p>
+                    <a href="">
+                        Gerar Senha
+                    </a>
+                </div>
+                <button type="submit">Criar Docente</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

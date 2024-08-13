@@ -1,0 +1,59 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+main,
+header {
+  margin: -8px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+}
+
+:root {
+  --background: rgb(83, 83, 83);
+  --backgroundButtons: rgb(19, 19, 19);
+  --texts: black;
+  --linksColors: white;
+  --backgroundInput: rgb(26, 26, 26);
+  --borderColors: white;
+}
+
+a,
+p,
+li,
+label,
+input::placeholder,
+button,
+h1,
+h3,
+h2 {
+  font-family: sans-serif;
+}
+
+/* Barra de rolagem inteira */
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+  background-color: #f1f1f1; /* Cor de fundo da barra */
+}
+
+/* Parte que desliza */
+::-webkit-scrollbar-thumb {
+  background-color: #000000; /* Cor da "pegada" da barra */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Parte da barra em si */
+::-webkit-scrollbar-track {
+  background-color: #00000000; /* Cor da trilha */
+}
+
+/* Barra de rolagem no hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #000000; /* Cor da "pegada" ao passar o mouse */
+}

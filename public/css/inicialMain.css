@@ -1,0 +1,41 @@
+.mainContent {
+  margin-top: 4em;
+}
+
+.mainContent section {
+  width: 80%;
+  background-color: var(--background);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 4em;
+  margin: auto;
+  border: solid 4px var(--borderColors);
+  border-radius: 12px;
+  box-shadow: 8px 8px 2px black;
+}
+
+.enterOptions {
+  border-radius: 12px;
+  background-color: var(--backgroundButtons);
+  width: 130px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 4px 2px 1px rgb(255, 255, 255);
+  transition: 200ms ease-in-out;
+}
+.enterOptions:hover {
+  box-shadow: 4px 2px 1px rgb(28, 28, 28);
+}
+.enterOptions a {
+  color: var(--linksColors);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.enterOptions a:hover {
+  border-radius: 2px;
+  border-bottom: 2px solid var(--linksColors);
+}

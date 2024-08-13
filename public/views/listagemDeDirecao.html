@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu Station</title>
+    <link rel="stylesheet" href="../css/inicialHeader.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/tabelaPrincipal.css">
+</head>
+<body>
+    <header class="mainHeader">
+        <h2>Edu Station</h2>
+        <div data-menu="menu">
+            <h1>Direção Workship</h1>
+            <img class="img" src="../imgs/perfilIcon.png" alt="ícone de perfil" id="profileIcon">
+        </div>
+    </header>
+    <main class="mainContent">
+        <section>
+            <div class="mainTitle">
+                <h2>Direção</h2>
+                <img src="../imgs/addIcon.png" alt="sumIcon">
+            </div>
+            <div class="divSearch">
+                <label for="">
+                    Digite o nome: <input type="text" placeholder="Text...">
+                </label>
+                <button>Pesquisar</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Data de Nascimento</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NOME</td>
+                        <td>CPF</td>
+                        <td>DATA</td>
+                        <td>
+                            <button class="btn-alterar">Alterar</button>
+                            <button class="btn-excluir">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NOME</td>
+                        <td>CPF</td>
+                        <td>DATA</td>
+                        <td>
+                            <button class="btn-alterar">Alterar</button>
+                            <button class="btn-excluir">Excluir</button>
+                        </td>
+                    </tr>
+                    <!-- Adicione mais linhas conforme necessário -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="../js/profileIconEvent.js"></script>
+</body>
+</html>
