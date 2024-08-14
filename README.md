@@ -1,9 +1,9 @@
-# Educational-System
+# Educational-System -> https://jordlolk.github.io/Educational-System/public/views/index.html
 ## Descrição geral 💬
 ### A aplicação tem como objetivo melhorar o gerenciamento de salas em um ambiente escolar, suas funcionalidades visam realizar um 📍[CRUD](https://www.sumologic.com/glossary/crud/#:~:text=CRUD%20is%20an%20acronym%20from,%2C%20read%2C%20update%20and%20delete.) das salas com foco em docentes, alunos, disciplinas e turmas.
 
 * ## Aviso importante:
-   ### O projeto não está completo, por isso muitas funcionalidades não estão disponíveis, além das páginas não estarem interligadas corretamente. 
+   ### O projeto não está completo, por isso muitas funcionalidades não estão disponíveis, além das páginas não estarem interligadas corretamente, o Node.js também não está conforme eu havia planejado.
 
 ## Objetivo 🚩
 ### A aplicação pode facilitar a organização de salas em uma escola, além de evitar grande desperdício de papel e otimização o tempo. 
