@@ -25,15 +25,16 @@
   cursor: pointer;
   position: absolute;
   right: 0;
+  margin: 12px;
   height: 4em;
   width: 60px;
-  animation: a 4s ease-in-out infinite;
+  animation: shadow 4s ease-in-out infinite;
 }
 
 .img:hover {
   box-shadow: 1px 0px 18px var(--texts);
 }
-.floatingMenu.showMenu{
+.floatingMenu.showMenu {
   display: none;
 }
 .floatingMenu {
@@ -89,7 +90,7 @@
   border: 1px solid white;
 }
 
-@keyframes a {
+@keyframes shadow {
   0% {
     box-shadow: 1px 0px 1px black;
   }

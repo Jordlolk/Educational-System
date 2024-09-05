@@ -74,6 +74,11 @@
                     Listagem Disciplina
                 </a>
             </li>
+            <li>
+                <a href="telaInicialDirecao.html">
+                    Tela inicial
+                </a>
+            </li>
         </ul>
     </aside>
     <main class="mainContent">
@@ -122,60 +127,64 @@
                     </tr>
                 </tbody>
             </table>
+            <article class="jsTables" id="tableDocentes">
+                <h3>Docentes</h3>
+                <div>
+                    <p>TURMA X - Y ANO</p>
+                    <ul class="jsTablesUl">
+                        <li>Matemática/ Arnaldo</li>
+                        <li>Português/ Liedro</li>
+                        <li>Física/ Athos</li>
+                        <li>Inglês/ Isaac</li>
+                        <li>Espanhol/ Louis</li>
+                        <li>Artes/ Tega</li>
+                        <li>História/ Hernesto</li>
+                    </ul>
+                </div>
+                <button id="exitTableDocente">Sair</button>
+            </article>
+            <article class="jsTables" id="tableAlunos">
+
+                <!-- 2 TABELA -->
+
+                <h3>Alunos matriculados</h3>
+                <div>
+                    <p>TURMA X - Y ANO</p>
+                    <table class="jsTablestable">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Data de nascimento</th>
+                                <th>CPF</th>
+                                <th>Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataALUNOS">
+                            
+                            <!-- <tr>
+                                <td>NOME</td>
+                                <td>CPF</td>
+                                <td>DATA</td>
+                                <td>
+                                    <button class="btn-alterarJs">Alterar</button>
+                                    <button class="btn-excluirJs">Excluir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>NOME</td>
+                                <td>CPF</td>
+                                <td>DATA</td>
+                                <td>
+                                    <button class="btn-alterarJs">Alterar</button>
+                                    <button class="btn-excluirJs">Excluir</button>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <button id="exitTableAluno">Sair</button>
+            </article>
         </section>
-        <article class="jsTables" id="tableDocentes">
-            <h3>Docentes</h3>
-            <div>
-                <p>TURMA X - Y ANO</p>
-                <ul class="jsTablesUl">
-                    <li>Matemática/ Arnaldo</li>
-                    <li>Português/ Liedro</li>
-                    <li>Física/ Athos</li>
-                    <li>Inglês/ Isaac</li>
-                    <li>Espanhol/ Louis</li>
-                    <li>Artes/ Tega</li>
-                    <li>História/ Hernesto</li>
-                </ul>
-            </div>
-            <button id="exitTableDocente">Sair</button>
-        </article>
-        <article class="jsTables" id="tableAlunos">
-            <h3>Alunos matriculados</h3>
-            <div>
-                <p>TURMA X - Y ANO</p>
-                <table class="jsTablestable">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Data de nascimento</th>
-                            <th>CPF</th>
-                            <th>Opções</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NOME</td>
-                            <td>CPF</td>
-                            <td>DATA</td>
-                            <td>
-                                <button class="btn-alterarJs">Alterar</button>
-                                <button class="btn-excluirJs">Excluir</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>NOME</td>
-                            <td>CPF</td>
-                            <td>DATA</td>
-                            <td>
-                                <button class="btn-alterarJs">Alterar</button>
-                                <button class="btn-excluirJs">Excluir</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <button id="exitTableAluno">Sair</button>
-        </article>
     </main>
     <script src="../js/floatingTables.js"></script>
     <script src="../js/profileIconEvent.js"></script>

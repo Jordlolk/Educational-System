@@ -1,15 +1,26 @@
 {
   "name": "educational-system",
   "version": "1.0.0",
-  "description": "",
+  "type": "module",
+  "description": "* ## Aviso importante:\r    ### O projeto não está completo, por isso muitas funcionalidades não estão disponíveis, além das páginas não estarem interligadas corretamente.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
-  }
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jordlolk/Educational-System.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jordlolk/Educational-System/issues"
+  },
+  "homepage": "https://github.com/Jordlolk/Educational-System#readme"
 }

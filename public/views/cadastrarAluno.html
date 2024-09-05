@@ -74,34 +74,44 @@
                     Listagem Disciplina
                 </a>
             </li>
+            <li>
+                <a href="telaInicialDirecao.html">
+                    Tela inicial
+                </a>
+            </li>
         </ul>
     </aside>
     <main>
         <section class="disciContent">
-            <form action="" class="form">
-                <h3>Cadastrar Docente</h3>
-                <label for="nomeAluno" id="aluno">
-                    Nome da Aluno <input placeholder="Nome do Aluno" name="Aluno" type="text" id="nomeAluno">
+            <form  class="form">
+                <h3>Cadastrar Aluno</h3>
+                <label for="username" id="aluno">
+                    Nome da Aluno <input placeholder="Nome do Aluno" name="Aluno" type="text" id="username">
+                 <p data-js="error"></p>
                 </label>
-                <label for="cpfAlunoInput" id="alunoCPF">
-                    CPF <input placeholder="CPF do aluno..." name="alunoCPF" type="text" id="cpfAlunoInput">
+                <label for="cpfInput" id="alunoCPF">
+                    CPF <input placeholder="CPF do aluno..." name="alunoCPF" type="text" id="cpfInput">
+                 <p data-js="error"></p>
                 </label>
-                <label for="dataNascimentoInput" id="dataNascimento">
-                    Data de nascimento <input name="dataNascimento" type="date" id="dataNascimentoInput">
+                <label for="emailInput" id="emailDirecao">
+                    E-mail <input type="text" id="emailInput" name="emailDirecao" placeholder="E-mail...">
+                 <p data-js="error"></p>
                 </label>
-                <label for="emailDirecaoInput" id="emailDirecao">
-                    E-mail <input type="text" id="emailDirecaoInput" name="emailDirecao" placeholder="E-mail...">
+                <label for="datNascimento" id="dataNascimento">
+                    Data de nascimento <input name="dataNascimento" type="date" id="datNascimento">
+                 <p data-js="error"></p>
                 </label>
                 <div class="gerarSenha">
-                    <p>Senha temporária</p>
-                    <a href="">
+                    <p>Preencha os dados</p>
+                    <button>
                         Gerar Senha
-                    </a>
+                    </button>
                 </div>
-                <button type="submit">Criar Aluno</button>
+                <button type="submit" id="capture">Criar Aluno</button>
             </form>
         </section>
     </main>
+    <script src="../js//allForms.js"></script>
     <script src="../js/profileIconEvent.js"></script>
 </body>
 </html>

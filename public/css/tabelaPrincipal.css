@@ -1,5 +1,6 @@
 .mainContent section {
   margin-top: 8em;
+  position: relative;
   gap: 2em;
   display: flex;
   flex-direction: column;
@@ -163,8 +164,9 @@ button {
   margin: auto;
   margin-top: 4em;
   border: 4px solid;
-  background-color: #e1e1e1cb;
+  background-color: #e1e1e1;
   display: none;
+  position: absolute;
 }
 
 .jsTables p {
