@@ -20,4 +20,4 @@ connection.connect((err) => { /* Verify if the connection get an error */
   }
 })
 
-export const con = connection;
+export {connection};

@@ -1,28 +1,61 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { con } from './connection.js';
-console.log(con);
-// Cria uma instância do Express
+import  {connection}  from '../dataBase/connection.js';
+import mysql from 'mysql2/promise';
+// CALL EXPRESS LIB
 const app = express();
-// Configura os caminhos de arquivo
+app.use(express.json())? console.log('JSON iniciado') : console.log('Failed'); // // TRANSLATE DATA TO JSON. 
+console.log("STATUS=ON;DATABASE:  "+ connection.config.database);
+// THIS CODE ABOVE IS THE PART OF CODE THAT MAKES THE CONNECTION WITH SQL
+// FIRST IT VERIFY WHAT REQUESTION IT WILL RECEIVE, IF IT A "DIRETOR" DATA OR "ALUNO" DATA.
+// FOR WHICH ONE THE CODE TREATS THE USER´S ENTRANCE AFTER THIS RUNS THE SQL STRING.
+// THE REST IS CATCHES FOR TREAT ERRORS.
+app.post('/submit-form', async (req, res) => {
+    const { nome, cpf, nasci, tipo } = req.body;
+    let SQLstring = null;
+    let infomationNeeded = null;
+    try {
+        if(tipo === 'diretor'){
+            SQLstring = 'INSERT INTO diretor (nome, cpf) VALUES (?, ?)'
+            infomationNeeded = [nome, cpf]
+        }else if(tipo === 'aluno'){
+            SQLstring = `CALL InserirAluno(?, ?, ?)`
+            infomationNeeded = [cpf, nome, nasci]
+        }else{
+            res.status(400).json({ message: 'Tipo de usuário não suportado' });
+            return;
+        }
+        connection.query(SQLstring,infomationNeeded,  (err, results) => {
+            if (err) {
+                console.error('Erro ao inserir dados:', err.message);
+                res.status(500).json({ message: 'Erro ao inserir dados', error: err.message });
+            } else {
+                res.status(200).json({ message: 'Dados inseridos com sucesso' });
+            }
+        });
+    } catch (error) {
+        if(error === 'ER_SIGNAL_EXCEPTION'){
+            console.log("TRiGGER ERROR: " + error.sqlMessage);
+        }
+        console.error('Erro ao processar a requisição:', error.message);
+        res.status(500).json({ message: 'Erro ao processar a requisição', error });
+    }
+});
+// SETUP THE FILES PATH
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const publicPath = path.join(__dirname, '..', 'public'); // Pasta pública para arquivos estáticos
-const viewsPath = path.join(publicPath, 'views'); // Caminho para arquivos HTML dentro da pasta 'public'
-
-// Define a porta na qual o servidor irá rodar
+const publicPath = path.join(__dirname, '..', 'public'); // PUBLIC FOLDER FOR STATIC FILES
+const viewsPath = path.join(publicPath, 'views'); // PATH TO LISTEN HTML FILES
+// DEFINE THE GATE OF THE NODE´S SERVER 
 const port = 3000;
-
-// Serve arquivos estáticos da pasta 'public'
+// USE STATIC FILES
 app.use(express.static(publicPath));
-
-// Define uma rota para a raiz ("/")
+// CREATE THE ROOT PATH "/ "
 app.get('/', (req, res) => {
-    res.sendFile(path.join(viewsPath, 'cadastrarDirecao.html')); // Envia o arquivo HTML como resposta
+    res.sendFile(path.join(viewsPath, 'cadastrarAluno.html')); // SEND HTML FILE
 });
-
-// Inicia o servidor e faz com que ele escute na porta definida
+// INITIATE THE SEVER WITH THE PORT "3000"
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
