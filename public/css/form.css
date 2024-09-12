@@ -62,7 +62,7 @@
 
 .form {
   label {
-    width: 80%;
+    width: 100%;
     align-items: center;
     color: var(--texts);
     font-size: 1.2em;
