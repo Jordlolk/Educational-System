@@ -1,23 +1,62 @@
-let nome = document.getElementById("name")
-let cpf = document.getElementById("cpf")
-let data = document.getElementById("data")
-let email = document.getElementById("email")
+let form = document.querySelector('.form')
+let username = document.getElementById("username")
+let cpfInput = document.getElementById("cpfInput")
+let alterarDIR = document.getElementById('capture')
+let contentLogError = document.getElementById('errors')
+let InputInUse = document.querySelectorAll('input')
 
-let oldPassW = document.getElementById("oldPassW")
-let newPassW = document.getElementById("newPassW")
-let confirmPassW = document.getElementById("confirmPass")
-
-let alterarPass = document.getElementById("alterarPass")
-let passWordInputs = document.getElementById("passwordsDiv")
-let toggle = false
-alterarPass.addEventListener("click", (event) => {
-  event.preventDefault()
-  if(toggle === false){
-    passWordInputs.classList.add("show")
-    toggle = true
-    return
+function checkInputs() {
+  let allFilled = true;
+  let firstInp = InputInUse[0].value.length
+  let lastInp = InputInUse[1].value.length
+  InputInUse.forEach(input => {
+    if (input.value === '' || firstInp < 2 || lastInp !== 11) {
+      allFilled = false;
+    }
+  });
+  if (allFilled) {
+    alterarDIR.style.opacity = '1';
+    alterarDIR.disabled = false;
+    alterarDIR.style.cursor = 'pointer'
   } else {
-    passWordInputs.classList.remove("show")
-    toggle = false
+    alterarDIR.style.opacity = '0.5';
+    alterarDIR.disabled = true;
+    alterarDIR.style.cursor = 'no-drop'
   }
+};
+InputInUse.forEach((input) => {
+  input.addEventListener('input', checkInputs)
 })
+checkInputs()
+
+async function fetchBackEnd(data, type){
+  try {
+      const bodyData = {nome: data.username, cpf: data.cpf, type}
+      const response = await fetch('http://localhost:3000/submit-form', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(bodyData)
+      });
+      const result = await response.json();
+      window.alert('DATA_STATUS: ' + result.message);
+  } catch (error) {
+      console.error('Erro ao enviar dados:', error);
+  }
+}
+form.addEventListener('submit', async (e) => {
+  e.preventDefault()
+  alterarDIR.classList.add('buttonClickEff')
+  setTimeout(() => {alterarDIR.classList.remove('buttonClickEff')}, 400)
+})
+console.log(contentLogError);
+contentLogError.children[0].innerHTML = `
+          💥error,
+            error,
+            error,
+            error,
+            error,
+            error,
+            error,
+            error,`

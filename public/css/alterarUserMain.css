@@ -3,7 +3,7 @@
   justify-content: center;
 }
 
-.login {
+/* .form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +43,7 @@
   }
 }
 
-.login label:nth-child(4) input {
+.form label:nth-child(4) input {
   font-size: 1.1em;
   font-weight: bolder;
   letter-spacing: 2px;
@@ -51,16 +51,16 @@
   background-color: rgb(99, 99, 99);
 }
 
-.login input:hover {
+.form input:hover {
   box-shadow: 0px 0px 12px rgb(255, 255, 255);
 }
 
-.login input:focus {
+.form input:focus {
   background-color: rgb(255, 245, 245);
   color: var(--texts);
 }
 
-.login h3 {
+.form h3 {
   background-color: rgb(83, 83, 83);
   padding: 0px 4px 0px;
   position: absolute;
@@ -68,7 +68,7 @@
   left: 1em;
 }
 
-.login div {
+.form div {
   width: 100%;
   justify-content: space-around;
 }
@@ -77,7 +77,7 @@
   display: flex;
 }
 
-.login button {
+.form button {
   color: var(--linksColors);
   background-color: var(--backgroundButtons);
   border-radius: 8px;
@@ -87,30 +87,4 @@
   max-width: 10em;
   min-width: 8em;
 }
-
-.login button:hover {
-  box-shadow: 0px 0px 1px rgb(0, 0, 0);
-}
-
-.passWordInputs {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2em;
-  opacity: 0;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
-  overflow: hidden;
-  max-height: 0;
-  label {
-    width: 80%;
-  }
-  label:nth-child(3){
-    margin: 4px;
-  }
-}
-
-.passWordInputs.show {
-  max-height: 280px;
-  display: flex;
-  opacity: 1;
-}
+ */

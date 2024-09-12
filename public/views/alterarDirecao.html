@@ -6,6 +6,7 @@
     <title>Edu Station</title>
     <link rel="stylesheet" href="../css/inicialHeader.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/alterarUserMain.css">
 </head>
 <body>
@@ -36,7 +37,7 @@
             </li>
             <li>
                 <a href="alterarUser.html">
-                    Alterar User
+                    Alterar Direção
                 </a>
             </li>
             <li>
@@ -83,37 +84,22 @@
     </aside>
     <main class="mainContent">
         <section>
-            <form action="" class="login">
-                <h3>Alterar Direção</h3>
-                <label for="name" id="userName">
-                    Nome <input id="name" type="text" name="userName" placeholder="Seu nome..." >
-                </label>
-                <label for="cpf" id="cpfUser">
-                    CPF <input id="cpf" type="text" name="cpfUser" placeholder="Seu CPF..." >
-                </label>
-                <label for="data" id="dataNasc">
-                   Data de nascimento <input id="data" type="date" name="dataNasc" >
-                </label>
-                <label for="email" id="userEmail">
-                    E-mail <input id="email" type="text" name="userEmail" placeholder="Seu E-mail..." >
-                </label>
-                <div class="passWordInputs" id="passwordsDiv">
-                    <label for="oldPassW" id="userOldPassw">
-                        Senha antiga
-                        <input id="oldPassW" name="userOldPassw" placeholder="Senha antiga" type="text">
-                    </label>
-                    <label for="newPassW" id="newPassUser">
-                        Senha nova 
-                        <input id="newPassW" name="newPassUser" placeholder="Senha nova" type="text">
-                    </label>
-                    <label for="confirmPass" id="userConfirmPassW">
-                        Confirmar senha
-                        <input id="confirmPass" name="userConfirmPassW" placeholder="Confirmar senha" type="text">
-                    </label>
+            <aside class="asideInfos">
+                <h4>Log</h4>
+                <div class="erros" id="errors">
+                    <p>💥</p>
                 </div>
+            </aside>
+            <form action="" class="form">
+                <h3>Alterar Direção</h3>
+                <label for="username" id="name">
+                    Nome <input id="username" type="text" name="name" placeholder="Seu nome..." >
+                </label>
+                <label for="cpfInput" id="cpfUser">
+                    CPF <input id="cpfInput" type="text" name="cpfUser" placeholder="Seu CPF..." >
+                </label>
                 <div class="passWordsButtons">
-                    <button id="alterarPass">Alterar Senha</button>
-                    <button id="alterarConta" type="submit">Alterar</button>
+                    <button id="capture" type="submit">Alterar</button>
                 </div>
             </form>
         </section>

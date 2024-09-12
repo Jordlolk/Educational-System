@@ -6,7 +6,7 @@ import mysql from 'mysql2/promise';
 // CALL EXPRESS LIB
 const app = express();
 app.use(express.json())? console.log('JSON iniciado') : console.log('Failed'); // // TRANSLATE DATA TO JSON. 
-console.log("STATUS=ON;DATABASE:  "+ connection.config.database);
+console.log("STATUS=ON; DATABASE:  "+ connection.config.database);
 // THIS CODE ABOVE IS THE PART OF CODE THAT MAKES THE CONNECTION WITH SQL
 // FIRST IT VERIFY WHAT REQUESTION IT WILL RECEIVE, IF IT A "DIRETOR" DATA OR "ALUNO" DATA.
 // FOR WHICH ONE THE CODE TREATS THE USER´S ENTRANCE AFTER THIS RUNS THE SQL STRING.
@@ -16,7 +16,24 @@ app.post('/submit-form', async (req, res) => {
     let SQLstring = null;
     let infomationNeeded = null;
     try {
-        if(tipo === 'diretor'){
+        switch(tipo){
+            case 'diretor':
+                SQLstring = 'INSERT INTO diretor (nome, cpf) VALUES (?, ?)'
+                infomationNeeded = [nome, cpf]
+            break;
+            case 'aluno':
+                SQLstring = `CALL InserirAluno(?, ?, ?)`
+                infomationNeeded = [cpf, nome, nasci]
+            break;
+            case 'altDIR':
+                SQLstring = 'UPDATE diretor set cpf = ?, nome = ? where id_docente = 1'
+                infomationNeeded = [cpf, nome]
+            break;
+            default:
+                res.status(400).json({ message: 'Tipo de usuário não suportado' });
+            break;
+        }
+       /*  if(tipo === 'diretor'){
             SQLstring = 'INSERT INTO diretor (nome, cpf) VALUES (?, ?)'
             infomationNeeded = [nome, cpf]
         }else if(tipo === 'aluno'){
@@ -25,19 +42,16 @@ app.post('/submit-form', async (req, res) => {
         }else{
             res.status(400).json({ message: 'Tipo de usuário não suportado' });
             return;
-        }
+        } */
         connection.query(SQLstring,infomationNeeded,  (err, results) => {
             if (err) {
-                console.error('Erro ao inserir dados:', err.message);
-                res.status(500).json({ message: 'Erro ao inserir dados', error: err.message });
+                console.error('Erro ao inserir dados: ' + err)
+                res.status(500).json({ message: `Erro ao inserir dados: ${err.message}`});
             } else {
                 res.status(200).json({ message: 'Dados inseridos com sucesso' });
             }
         });
     } catch (error) {
-        if(error === 'ER_SIGNAL_EXCEPTION'){
-            console.log("TRiGGER ERROR: " + error.sqlMessage);
-        }
         console.error('Erro ao processar a requisição:', error.message);
         res.status(500).json({ message: 'Erro ao processar a requisição', error });
     }

@@ -13,12 +13,15 @@ let password = false
 if(genPassWordContent && genPassWordContent.children.length > 0){
    genPassText = document.querySelector(".gerarSenha").children[0]
    genPassButton = document.querySelector(".gerarSenha").children[1]
+
    const createPassWord = (e) => {
     e.preventDefault()
     genPassButton.classList.add('buttonClickEff')
     setTimeout(() => { genPassButton.classList.remove('buttonClickEff')}, 400)
     password = Math.floor((Math.random() * 900000) + 100000);
+    password > 0? genPassText.innerHTML = "Senha gerada ❗" : null
   }
+
   genPassButton.addEventListener('click' , createPassWord)
   function checkInputs() {
     let allFilled = true;
@@ -28,11 +31,15 @@ if(genPassWordContent && genPassWordContent.children.length > 0){
       }
     });
     if (allFilled) {
+      genPassText.innerHTML = "Gere a senha ❗";
       genPassButton.style.opacity = '1';
       genPassButton.disabled = false;
+      genPassButton.style.cursor = 'pointer'
     } else {
+      genPassText.innerHTML = "Insira os dados";
       genPassButton.style.opacity = '0.5';
       genPassButton.disabled = true;
+      genPassButton.style.cursor = 'no-drop'
     }
   }
   let InputInUse = allInputs.filter((input,i) => {
@@ -107,7 +114,9 @@ function errorAlert(input, string) {
   input.style.animation = "error 1.2s infinite";
   setTimeout(() => { input.style.animation = "none" }, 1200);
 }
+let countAluno = 0;
 
+//Cadastro: Diretor e Aluno
 form.addEventListener('submit', async (e) => {
   e.preventDefault()
   buttonCapture.classList.add('buttonClickEff')
@@ -128,17 +137,16 @@ form.addEventListener('submit', async (e) => {
     }
     const DIRETOR_DATA = {
       username : username.value,
-      cpf : cpfInput.value,
-      email : emailInput.value,
+      cpf : cpfInput.value,/* REVISAR OS DADOS DE ALUNOS E PROFESSORES */
       senha : senhaInput.value,
       type: 'diretor'
     }
-    localStorage.setItem('REGISTER_Diretor' , JSON.stringify(DIRETOR_DATA))
-    window.alert('Direto: Inserido ')
+    window.alert('Diretor: Inserido...')
     fetchBackEnd(DIRETOR_DATA, DIRETOR_DATA.type)
   } else{
+
     if(!isValid || !password){
-      !password ? genPassText.innerHTML = "Gere uma senha ❗" : 'null';
+      genPassText.innerHTML = "Gere uma senha ❗";
       return; /* Stop the code. */
     }
     const ALUNO_DATA = {
@@ -149,8 +157,9 @@ form.addEventListener('submit', async (e) => {
       data : dataNasci.value,
       type : 'aluno'
     }
-    localStorage.setItem('REGISTER_Aluno' , JSON.stringify(ALUNO_DATA))
-    window.alert("Aluno: Inserido")
+    window.alert("Aluno: Inserido...")
+    localStorage.setItem(`ALUNO_DATA${countAluno}`, JSON.stringify(ALUNO_DATA))
+    countAluno += 1
     fetchBackEnd(ALUNO_DATA, ALUNO_DATA.type)
   }
   errorElement.forEach((p) => {
