@@ -84,19 +84,15 @@
     </aside>
     <main class="mainContent">
         <section>
-            <!-- <aside class="asideInfos">
-                <h4>Log</h4>
-                <div class="erros" id="errors">
-                    <p>💥</p>
-                </div>
-            </aside> -->
             <form action="" class="form">
                 <h3>Alterar Direção</h3>
                 <label for="username" id="name">
                     Nome <input id="username" type="text" name="name" placeholder="Seu nome..." >
+                    <p id="errors"></p>
                 </label>
                 <label for="cpfInput" id="cpfUser">
                     CPF <input id="cpfInput" type="text" name="cpfUser" placeholder="Seu CPF..." >
+                    <p id="errors"></p>
                 </label>
                 <div class="passWordsButtons">
                     <button id="capture" type="submit">Alterar</button>
@@ -104,7 +100,12 @@
             </form>
         </section>
     </main>
+    <aside class="asideInfos">
+        <button class="close">❌</button>
+        <h4>Erro no sistema</h4>
+        <p id="errors"></p>
+    </aside>
     <script src="../js/profileIconEvent.js"></script>
-    <script src="../js/alterarDirecao.js"></script>
+    <script type="module" src="../js/alterarDirecao.js"></script>
 </body>
 </html>

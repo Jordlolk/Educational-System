@@ -3,14 +3,13 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 895px) {
   #allPageLinks {
-    position: none;
     margin: auto;
   }
 }
 
-@media (min-width: 820px) {
+@media (min-width: 895px) {
   #allPageLinks {
     position: absolute;
   }
@@ -78,6 +77,7 @@ html {
 }
 
 body {
+  height: 98vh;
   position: relative;
   background-color: var(--background);
 }

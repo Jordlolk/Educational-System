@@ -33,16 +33,6 @@ app.post('/submit-form', async (req, res) => {
                 res.status(400).json({ message: 'Tipo de usuário não suportado' });
             break;
         }
-       /*  if(tipo === 'diretor'){
-            SQLstring = 'INSERT INTO diretor (nome, cpf) VALUES (?, ?)'
-            infomationNeeded = [nome, cpf]
-        }else if(tipo === 'aluno'){
-            SQLstring = `CALL InserirAluno(?, ?, ?)`
-            infomationNeeded = [cpf, nome, nasci]
-        }else{
-            res.status(400).json({ message: 'Tipo de usuário não suportado' });
-            return;
-        } */
         connection.query(SQLstring,infomationNeeded,  (err, results) => {
             if (err) {
                 console.error('Erro ao inserir dados: ' + err)

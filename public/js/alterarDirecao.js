@@ -1,8 +1,9 @@
+import {showLogError} from "./globalFunctions.js"
+
 let form = document.querySelector('.form')
 let username = document.getElementById("username")
 let cpfInput = document.getElementById("cpfInput")
 let alterarDIR = document.getElementById('capture')
-let contentLogError = document.getElementById('errors')
 let InputInUse = document.querySelectorAll('input')
 
 function checkInputs() {
@@ -40,7 +41,7 @@ async function fetchBackEnd(data, type){
           body: JSON.stringify(bodyData)
       });
       const result = await response.json();
-      window.alert('DATA_STATUS: ' + result.message);
+      showLogError(result.message)
   } catch (error) {
       console.error('Erro ao enviar dados:', error);
   }
@@ -50,13 +51,3 @@ form.addEventListener('submit', async (e) => {
   alterarDIR.classList.add('buttonClickEff')
   setTimeout(() => {alterarDIR.classList.remove('buttonClickEff')}, 400)
 })
-console.log(contentLogError);
-contentLogError.children[0].innerHTML = `
-          💥error,
-            error,
-            error,
-            error,
-            error,
-            error,
-            error,
-            error,`

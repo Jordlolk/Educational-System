@@ -1,14 +1,17 @@
-let form = document.querySelector('.form')
-let username = document.getElementById("username")
-let cpfInput = document.getElementById("cpfInput")
-let emailInput = document.getElementById("emailInput")
-let senhaInput = document.getElementById("senhaInput")
-let confirmSenha = document.getElementById("confirmSenha")
-let dataNasci = document.getElementById("datNascimento")
-let buttonCapture = document.getElementById("capture") /* All the elements get from the HTML for the code */
+import {showLogError, errorAlert} from "./globalFunctions.js"
+const form = document.querySelector('.form')
+const username = document.getElementById("username") 
+const cpfInput = document.getElementById("cpfInput")
+const buttonCapture = document.getElementById("capture")
+const emailInput = document.getElementById("emailInput")
+const senhaInput = document.getElementById("senhaInput")
+const confirmSenha = document.getElementById("confirmSenha")
+const dataNasci = document.getElementById("datNascimento")
+let allInputs = [username,cpfInput,emailInput,senhaInput,dataNasci]
+/*Lines 1-9: All this variables is present in all HTML pages that have inputs.
+all the pages have a standards classes.*/
 let genPassText, genPassButton;
 const genPassWordContent = document.querySelector('.gerarSenha')
-let allInputs = [username,cpfInput,emailInput,senhaInput,dataNasci]
 let password = false
 if(genPassWordContent && genPassWordContent.children.length > 0){
    genPassText = document.querySelector(".gerarSenha").children[0]
@@ -88,13 +91,9 @@ let validationsInUse = validations.filter((validation, i) => {
   }
 })
 
-async function fetchBackEnd(data, type) {
+async function fetchBackEnd(data) {
   try {
-      const bodyData = type === 'diretor' 
-          ? {nome: data.username, cpf: data.cpf, tipo : data.type}
-          : {nome: data.username, 
-            cpf: data.cpf, email: data.email,
-            tipo : data.type, nasci : data.data};
+      const bodyData = {...data}
       const response = await fetch('http://localhost:3000/submit-form', {
           method: 'POST',
           headers: {
@@ -102,27 +101,21 @@ async function fetchBackEnd(data, type) {
           },
           body: JSON.stringify(bodyData)
       });
-      const result = await response.json();
-      window.alert('DATA_STATUS: ' + result.message);
+      const result = await response.json(); 
+      showLogError(result.message)
   } catch (error) {
       console.error('Erro ao enviar dados:', error);
   }
 }
 
-function errorAlert(input, string) {
-  input.innerHTML = string;
-  input.style.animation = "error 1.2s infinite";
-  setTimeout(() => { input.style.animation = "none" }, 1200);
-}
-let countAluno = 0;
-
 //Cadastro: Diretor e Aluno
+let countAluno = 0;
 form.addEventListener('submit', async (e) => {
   e.preventDefault()
+  let errorElement = document.querySelectorAll('[data-js="error"]');
   buttonCapture.classList.add('buttonClickEff')
   setTimeout(() => {buttonCapture.classList.remove('buttonClickEff')}, 400)
   let isValid = true
-  let errorElement = document.querySelectorAll('[data-js="error"]');
   validationsInUse.forEach((validation, i) => {
     // clear the error of the correct inputs
     errorElement[i].innerHTML = ''
@@ -136,13 +129,12 @@ form.addEventListener('submit', async (e) => {
       return; /* Stop the code. */
     }
     const DIRETOR_DATA = {
-      username : username.value,
+      nome : username.value,
       cpf : cpfInput.value,/* REVISAR OS DADOS DE ALUNOS E PROFESSORES */
       senha : senhaInput.value,
-      type: 'diretor'
+      tipo: 'diretor'
     }
-    window.alert('Diretor: Inserido...')
-    fetchBackEnd(DIRETOR_DATA, DIRETOR_DATA.type)
+    fetchBackEnd(DIRETOR_DATA)
   } else{
 
     if(!isValid || !password){
@@ -150,17 +142,16 @@ form.addEventListener('submit', async (e) => {
       return; /* Stop the code. */
     }
     const ALUNO_DATA = {
-      username : username.value,
+      nome : username.value,
       cpf : cpfInput.value,
       email : emailInput.value,
       senha: password,
-      data : dataNasci.value,
-      type : 'aluno'
+      nasci : dataNasci.value,
+      tipo : 'aluno'
     }
-    window.alert("Aluno: Inserido...")
     localStorage.setItem(`ALUNO_DATA${countAluno}`, JSON.stringify(ALUNO_DATA))
     countAluno += 1
-    fetchBackEnd(ALUNO_DATA, ALUNO_DATA.type)
+    fetchBackEnd(ALUNO_DATA)
   }
   errorElement.forEach((p) => {
     p.innerHTML = ""
