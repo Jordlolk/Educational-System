@@ -5,7 +5,6 @@ let username = document.getElementById("username")
 let cpfInput = document.getElementById("cpfInput")
 let alterarDIR = document.getElementById('capture')
 let InputInUse = document.querySelectorAll('input')
-
 function checkInputs() {
   let allFilled = true;
   let firstInp = InputInUse[0].value.length
@@ -30,9 +29,9 @@ InputInUse.forEach((input) => {
 })
 checkInputs()
 
-async function fetchBackEnd(data, type){
+async function fetchBackEnd(data){
   try {
-      const bodyData = {nome: data.username, cpf: data.cpf, type}
+      const bodyData = {...data}
       const response = await fetch('http://localhost:3000/submit-form', {
           method: 'POST',
           headers: {
@@ -49,5 +48,11 @@ async function fetchBackEnd(data, type){
 form.addEventListener('submit', async (e) => {
   e.preventDefault()
   alterarDIR.classList.add('buttonClickEff')
-  setTimeout(() => {alterarDIR.classList.remove('buttonClickEff')}, 400)
+  setTimeout(() => {alterarDIR.classList.remove('buttonClickEff')}, 400)  
+  const dirUpdate = {
+    nome : username.value,
+    cpf : cpfInput.value,
+    tipo : 'altDIR'
+  }
+  fetchBackEnd(dirUpdate)
 })

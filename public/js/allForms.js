@@ -1,11 +1,10 @@
-import {showLogError, errorAlert} from "./globalFunctions.js"
+import {showLogError, errorAlert, filterValidations} from "./globalFunctions.js"
 const form = document.querySelector('.form')
 const username = document.getElementById("username") 
 const cpfInput = document.getElementById("cpfInput")
 const buttonCapture = document.getElementById("capture")
 const emailInput = document.getElementById("emailInput")
 const senhaInput = document.getElementById("senhaInput")
-const confirmSenha = document.getElementById("confirmSenha")
 const dataNasci = document.getElementById("datNascimento")
 let allInputs = [username,cpfInput,emailInput,senhaInput,dataNasci]
 /*Lines 1-9: All this variables is present in all HTML pages that have inputs.
@@ -52,44 +51,11 @@ if(genPassWordContent && genPassWordContent.children.length > 0){
     }
   })
   checkInputs()
-} else{
+}
+else{
    genPassButton = null
    genPassText = null
 }
-
-const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;  /* Verify e-mail */
-const validations = [
-  {
-    input : username,
-    condicao: () =>  username.value === "" || username.value.length <= 2,
-    error: "Insira um nome"
-    },
-  {
-    input: cpfInput,
-    condicao: () => cpfInput.value.length !== 11 || cpfInput.value === '',
-    error: "CPF incorreto ou não inserido"
-  },
-  {
-    input : emailInput,
-    condicao: () => !regex.test(emailInput.value),
-    error: "E-mail incorreto ou não inserido"
-  },
-  {
-    input : senhaInput,
-    condicao: () => senhaInput.value !== confirmSenha.value || senhaInput.value === '' || confirmSenha.value === '' || senhaInput === null,
-    error: "Senhas não coincidem ou vazias"
-  },
-  {
-    input: dataNasci,
-    condicao: () => dataNasci.value === '' || dataNasci.value === null,
-    error: "Insira uma data"
-  }
-];
-let validationsInUse = validations.filter((validation, i) => {
-  if(validation.input !== null){
-    return validations[i]
-  }
-})
 
 async function fetchBackEnd(data) {
   try {
@@ -97,14 +63,14 @@ async function fetchBackEnd(data) {
       const response = await fetch('http://localhost:3000/submit-form', {
           method: 'POST',
           headers: {
-              'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(bodyData)
       });
       const result = await response.json(); 
       showLogError(result.message)
   } catch (error) {
-      console.error('Erro ao enviar dados:', error);
+    console.error('Erro ao enviar dados:', error);
   }
 }
 
@@ -116,7 +82,7 @@ form.addEventListener('submit', async (e) => {
   buttonCapture.classList.add('buttonClickEff')
   setTimeout(() => {buttonCapture.classList.remove('buttonClickEff')}, 400)
   let isValid = true
-  validationsInUse.forEach((validation, i) => {
+  filterValidations().forEach((validation, i) => {
     // clear the error of the correct inputs
     errorElement[i].innerHTML = ''
     if (validation.condicao()) {
@@ -136,7 +102,6 @@ form.addEventListener('submit', async (e) => {
     }
     fetchBackEnd(DIRETOR_DATA)
   } else{
-
     if(!isValid || !password){
       genPassText.innerHTML = "Gere uma senha ❗";
       return; /* Stop the code. */

@@ -15,6 +15,7 @@ app.post('/submit-form', async (req, res) => {
     const { nome, cpf, nasci, tipo } = req.body;
     let SQLstring = null;
     let infomationNeeded = null;
+    console.log(tipo);
     try {
         switch(tipo){
             case 'diretor':
@@ -26,7 +27,7 @@ app.post('/submit-form', async (req, res) => {
                 infomationNeeded = [cpf, nome, nasci]
             break;
             case 'altDIR':
-                SQLstring = 'UPDATE diretor set cpf = ?, nome = ? where id_docente = 1'
+                SQLstring = 'UPDATE diretor set cpf = ?, nome = ?'
                 infomationNeeded = [cpf, nome]
             break;
             default:
@@ -57,7 +58,7 @@ const port = 3000;
 app.use(express.static(publicPath));
 // CREATE THE ROOT PATH "/ "
 app.get('/', (req, res) => {
-    res.sendFile(path.join(viewsPath, 'cadastrarAluno.html')); // SEND HTML FILE
+    res.sendFile(path.join(viewsPath, 'alterarDirecao.html')); // SEND HTML FILE
 });
 // INITIATE THE SEVER WITH THE PORT "3000"
 app.listen(port, () => {
