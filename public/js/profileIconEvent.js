@@ -8,15 +8,18 @@ profileIcon.addEventListener("click", (e) => {
     virtualElem.classList.add("floatingMenu")
     virtualElem.innerHTML = `
     <li>
-    <a href="../views/alterarUser.html">Alterar</a>
+      <a href="../views/alterarDirecao.html">Alterar perfil</a>
     </li>
     <p></p>
     <li>
       <a href="../views/index.html">Sair</a>
-      </li>
-      `;
-      floatingMenu.appendChild(virtualElem)
-      showMenu = true
+    </li>`;
+    floatingMenu.appendChild(virtualElem)
+    showMenu = true
+  floatingMenu.addEventListener('mouseleave', () => {
+    floatingMenu.removeChild(virtualElem)
+    showMenu = false
+  })
   } else {
     showMenu = false
     floatingMenu.removeChild(virtualElem)

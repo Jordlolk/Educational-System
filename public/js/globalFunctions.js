@@ -27,16 +27,24 @@ function filterValidations(){
   const cpfInput = document.getElementById("cpfInput")
   const emailInput = document.getElementById("emailInput")
   const senhaInput = document.getElementById("senhaInput")
-  const confirmSenha = document.getElementById("confirmSenha")
+  const photo = document.getElementById('photo')
+  let confirmSenha = document.getElementById("confirmSenha")
   const dataNasci = document.getElementById("datNascimento")
-
-  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;  /* Verify e-mail */
+  if(confirmSenha === null){
+    confirmSenha = {
+      input : senhaInput,
+      condicao: () => senhaInput.value === '' || confirmSenha.value === '' || senhaInput === null,
+      error: "Senhas não coincidem ou vazias"
+    }
+  }
+  const regexLinks = /^(hhtps:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:[0-9]{1,5})?(\/[^\s]*)$/
+  const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;  /* Verify e-mail */
   const validations = [
     {
       input : username,
       condicao: () =>  username.value === "" || username.value.length <= 2,
       error: "Insira um nome"
-      },
+    },
     {
       input: cpfInput,
       condicao: () => parseInt(cpfInput.value) === NaN || cpfInput.value === '',
@@ -44,7 +52,7 @@ function filterValidations(){
     },
     {
       input : emailInput,
-      condicao: () => !regex.test(emailInput.value),
+      condicao: () => !regexEmail.test(emailInput.value),
       error: "E-mail incorreto ou não inserido"
     },
     {
@@ -56,9 +64,13 @@ function filterValidations(){
       input: dataNasci,
       condicao: () => dataNasci.value === '' || dataNasci.value === null,
       error: "Insira uma data"
+    },
+    {
+      input: photo,
+      condicao: () => regexLinks.test(photo.value) || photo.value.length > 0,
+      error: "Link no formato errado!"
     }
   ];
-
   let validationsInUse = validations.filter((validation, i) => {
     if(validation.input !== null){
       return validations[i]
@@ -67,4 +79,7 @@ function filterValidations(){
   return validationsInUse;
 }
 
+function verifylogin(){
+  let inputText = 'text'
+}
 export {showLogError, errorAlert, filterValidations}

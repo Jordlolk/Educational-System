@@ -24,8 +24,13 @@
                 </a>
             </li>
             <li>
+                <a href="register.html">
+                    Registrar
+                </a>
+            </li>
+            <li>
                 <a href="alterarDisciplina.html">
-                    Alterar Disciplina
+                    Alterar Discplina
                 </a>
             </li>
             <li>
@@ -81,31 +86,37 @@
         </ul>
     </aside>
     <main class="mainContent">
-        <form class="login">
-            <h3>Login</h3>
+        <form action="" class="login" id="login">
+            <h3>Register Account</h3>
             <div class="divInputs">
-<!--                 <div class="log">
-                    <h5>Warning</h5>
-                    <p class="errors">ALABASTA IS THE ONE  CITY THAT HAVE THE MOST!</p>
-                </div> -->
-                <label for="userName">
-                   Nome do diretor <input name="nome" placeholder="Seu nome..." required type="text" >
+                <label for="userName" id="name">
+                   Nome do diretor <input id="username" name="nome" placeholder="Seu nome..." type="text" >
+                   <p data-js="error"></p>
                 </label>
-                <label for="passWord">
-                   Senha<input name="senha" placeholder="Sua senha..." required type="text">
+                <label for="cpfInput" id="cpf">
+                    CPF <input type="text" placeholder="Seu CPF..." name="cpf" id="cpfInput">
+                    <p data-js="error"></p>
+                </label>
+                <label for="senhaInput" id="senha">
+                   Senha<input id="senhaInput" name="senha" placeholder="Sua senha..." type="text">
+                   <p data-js="error"></p>
+                </label>
+                <label for="photo" id="fotoDePerfil">
+                    Foto de Perfil <input  placeholder="Insira um link.." type="text" id="photo" name="foto de perfil">
+                    <p data-js="error"></p>
                 </label>
             </div>
             <div class="helpers">
-                <a href="register.html">Primeira vez aqui?</a>
-                <a href="">Esqueceu a senha?</a>
+                <a href="index.html">Já possui uma conta?</a>
             </div>
             <button>Entrar</button>
         </form>
     </main>
     <aside class="asideInfos">
         <button class="close">❌</button>
-        <h4>Log</h4>
+        <h4 id="errorTitle">Log</h4>
         <p id="errors"></p>
     </aside>
+    <script type="module" src="../js/registers.js"></script>
 </body>
 </html>
