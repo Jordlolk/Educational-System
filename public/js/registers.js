@@ -6,19 +6,33 @@ const passWord = document.getElementById('senhaInput')
 let photo = document.getElementById('photo')
 const inputs = document.querySelectorAll('input')
 const login = document.getElementById('login')
-
+async function fetchBackEnd(body){
+  let rest = {...body}
+  try{
+    let response = await fetch('http://localhost:3000/submit-form-register', {
+    method : 'POST',
+    headers : {'Content-Type' : 'application/json'},
+    body : JSON.stringify(rest)
+  })
+    let data =  response
+    console.log(data.ok)
+  } catch(e) {
+    console.log(e.message);
+  }
+}
+console.log('ad');
 login.addEventListener('submit', (e) => {
   e.preventDefault()
   let isValid = true
-  filterValidations().forEach((validation) => {
+  /* filterValidations().forEach((validation) => {
       if(validation.condicao()){
         errorAlert(validation.input.parentElement.children[1], validation.error)
-        isValid = false  /* don´t let the code run to the end */
+        isValid = false  
       }
   })
   if(isValid){
-    return /* stop the code */
-  }
+    return 
+  } */
   photo.value =  photo.value.length > 0 ? '../imgs/perfilIcon.png' : photo.value
   const accountLoggedIn = {
     nome : username.value,
@@ -26,5 +40,6 @@ login.addEventListener('submit', (e) => {
     passWord: passWord.value,
     photo : photo.v
   }
+  fetchBackEnd(accountLoggedIn)
 })
 

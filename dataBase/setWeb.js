@@ -11,11 +11,29 @@ console.log("STATUS=ON; DATABASE:  "+ connection.config.database);
 // FIRST IT VERIFY WHAT REQUESTION IT WILL RECEIVE, IF IT A "DIRETOR" DATA OR "ALUNO" DATA.
 // FOR WHICH ONE THE CODE TREATS THE USER´S ENTRANCE AFTER THIS RUNS THE SQL STRING.
 // THE REST IS CATCHES FOR TREAT ERRORS.
+app.post('/submit-form-register', async (req, res) => {
+    const {nome , cpf} = req.body
+    let infomationNeeded = [nome, cpf]
+    let SQLstring = `UPDATE diretor SET nome = ? , cpf = ?;`
+    try {
+        connection.query(SQLstring, infomationNeeded, (err, result) => {
+            if(err){
+                console.error('Erro ao inserir dados: ' + err)
+                res.status(500).json({ message: `Erro ao inserir dados: ${err.message}`});
+            }
+            else {
+                res.status(200).json({ message: 'Dados inseridos com sucesso' });
+            }
+        })
+    } catch (error) {
+        console.error('Erro ao processar a requisição:', error.message);
+        res.status(500).json({ message: 'Erro ao processar a requisição', error });
+    }
+})
 app.post('/submit-form', async (req, res) => {
     const { nome, cpf, nasci, tipo } = req.body;
     let SQLstring = null;
     let infomationNeeded = null;
-    console.log(tipo);
     try {
         switch(tipo){
             case 'diretor':
@@ -58,7 +76,7 @@ const port = 3000;
 app.use(express.static(publicPath));
 // CREATE THE ROOT PATH "/ "
 app.get('/', (req, res) => {
-    res.sendFile(path.join(viewsPath, 'alterarDirecao.html')); // SEND HTML FILE
+    res.sendFile(path.join(viewsPath, 'register.html')); // SEND HTML FILE
 });
 // INITIATE THE SEVER WITH THE PORT "3000"
 app.listen(port, () => {
