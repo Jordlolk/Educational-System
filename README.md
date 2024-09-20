@@ -8,8 +8,10 @@
 ### A aplicação pode facilitar a organização de salas em uma escola, além de evitar grande desperdício de papel e otimização o tempo. 
 
 ## News
+   * ### O NodeJs ainda não consegue manter todas as páginas para entrar em contato constante com o BD, pretendo implementar uma solução para isso futuramente!
+    * - O que é viavél fazer agora é apenas um FORK.  
    - ## Funções do [CRUD](https://www.sumologic.com/glossary/crud/#:~:text=CRUD%20is%20an%20acronym%20from,%2C%20read%2C%20update%20and%20delete.) estão disponivéis em algumas páginas, sendo elas respectivamente: AlterarDireção, CadastrarAluno.
-   - *ALTERAR DIREÇÃO* > O código verifica se o BD já contem um diretor, caso não houver a string com o comando SQL sera alterada para um insert.
+   - *ALTERAR DIREÇÃO* > O código verifica se o BD já contem um diretor, caso não houver a string com o comando SQL será alterada para um insert.
    - *CADASTRAR ALUNO* > O comando SQL usado nessa página é bem mais complexo, o limite de alunos por turma é de 20, cada vez que o número de alunos passa de 20 o contador de turmas aumenta, simulando uma outra turma/sala para aula.
 
 ## Tecnologias 👾
