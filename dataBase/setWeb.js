@@ -14,7 +14,14 @@ console.log("STATUS=ON; DATABASE:  "+ connection.config.database);
 app.post('/submit-form-register', async (req, res) => {
     const {nome , cpf} = req.body
     let infomationNeeded = [nome, cpf]
-    let SQLstring = `UPDATE diretor SET nome = ? , cpf = ?;`
+    let SQLstring;
+    let howManyDirectors = await connection.promise().query('SELECT COUNT(*) FROM DIRETOR')
+    console.log(howManyDirectors);
+    if(howManyDirectors[0].length > 0){
+        SQLstring = 'UPDATE diretor set nome = ?, cpf = ?'
+    } else {
+        SQLstring = 'INSERT INTO DIRETOR(nome, cpf) values(?,?)'
+    }
     try {
         connection.query(SQLstring, infomationNeeded, (err, result) => {
             if(err){
@@ -44,10 +51,10 @@ app.post('/submit-form', async (req, res) => {
                 SQLstring = `CALL InserirAluno(?, ?, ?)`
                 infomationNeeded = [cpf, nome, nasci]
             break;
-            case 'altDIR':
+           /*  case 'altDIR':
                 SQLstring = 'UPDATE diretor set cpf = ?, nome = ?'
                 infomationNeeded = [cpf, nome]
-            break;
+            break; */
             default:
                 res.status(400).json({ message: 'Tipo de usuário não suportado' });
             break;
@@ -76,7 +83,7 @@ const port = 3000;
 app.use(express.static(publicPath));
 // CREATE THE ROOT PATH "/ "
 app.get('/', (req, res) => {
-    res.sendFile(path.join(viewsPath, 'register.html')); // SEND HTML FILE
+    res.sendFile(path.join(viewsPath, 'alterarDirecao.html')); // SEND HTML FILE
 });
 // INITIATE THE SEVER WITH THE PORT "3000"
 app.listen(port, () => {
