@@ -9,8 +9,8 @@
 
 ## News
    - ## Funções do [CRUD](https://www.sumologic.com/glossary/crud/#:~:text=CRUD%20is%20an%20acronym%20from,%2C%20read%2C%20update%20and%20delete.) estão disponivéis em algumas páginas, sendo elas respectivamente: AlterarDireção, CadastrarAluno.
-   - ALTERAR DIREÇÃO > O código verifica se o BD já contem um diretor, caso não houver a string com o comando SQL sera alterada para um insert.
-   - CADASTRAR ALUNO > O comando SQL usado nessa página é bem mais complexo, o limite de alunos por turma é de 20, cada vez que o número de alunos passa de 20 o contador de turmas aumenta, simulando uma outra turma/sala para aula.
+   - *ALTERAR DIREÇÃO* > O código verifica se o BD já contem um diretor, caso não houver a string com o comando SQL sera alterada para um insert.
+   - *CADASTRAR ALUNO* > O comando SQL usado nessa página é bem mais complexo, o limite de alunos por turma é de 20, cada vez que o número de alunos passa de 20 o contador de turmas aumenta, simulando uma outra turma/sala para aula.
 
 ## Tecnologias 👾
  # 📍 [![Node.js](https://img.shields.io/badge/Node.js-323330?style=for-the-badge&logo=Node.js&logoColor=F7DF1E)](https://nodejs.org/api/documentation.html) [![javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
