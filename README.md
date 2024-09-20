@@ -9,8 +9,12 @@
 
 
 ## Tecnologias 👾
- # 📍
-  [![Node.js](https://img.shields.io/badge/Node.js-323330?style=for-the-badge&logo=Node.js&logoColor=F7DF1E)](https://nodejs.org/api/documentation.html) 
+ # 📍 [![Node.js](https://img.shields.io/badge/Node.js-323330?style=for-the-badge&logo=Node.js&logoColor=F7DF1E)](https://nodejs.org/api/documentation.html) 
+    <ul>
+       <li>
+            <p>NodeJs (v20.17.0)</p>
+       </li>
+    </ul>
 
  # 📍
   [![javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
