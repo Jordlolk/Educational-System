@@ -32,7 +32,7 @@ checkInputs()
 async function fetchBackEnd(data){
   try {
       const bodyData = {...data}
-      const response = await fetch('http://localhost:3000/submit-form', {
+      const response = await fetch('http://localhost:3000/submit-form-register', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ async function fetchBackEnd(data){
       const result = await response.json();
       showLogError(result.message)
   } catch (error) {
-      console.error('Erro ao enviar dados:', error);
+      console.error('Erro ao enviar dados:', error.message);
   }
 }
 form.addEventListener('submit', async (e) => {
@@ -52,7 +52,6 @@ form.addEventListener('submit', async (e) => {
   const dirUpdate = {
     nome : username.value,
     cpf : cpfInput.value,
-    tipo : 'altDIR'
   }
   fetchBackEnd(dirUpdate)
 })

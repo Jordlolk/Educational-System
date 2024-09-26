@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import  {connection}  from '../dataBase/connection.js';
-import mysql from 'mysql2/promise';
+
 // CALL EXPRESS LIB
 const app = express();
 app.use(express.json())? console.log('JSON iniciado') : console.log('Failed'); // // TRANSLATE DATA TO JSON. 
@@ -11,10 +11,20 @@ console.log("STATUS=ON; DATABASE:  "+ connection.config.database);
 // FIRST IT VERIFY WHAT REQUESTION IT WILL RECEIVE, IF IT A "DIRETOR" DATA OR "ALUNO" DATA.
 // FOR WHICH ONE THE CODE TREATS THE USER´S ENTRANCE AFTER THIS RUNS THE SQL STRING.
 // THE REST IS CATCHES FOR TREAT ERRORS.
+
+// update disciplina set cpf_docente = (select cpf from docente where id_docente = 1) where id_disciplina = 1;
+//
+let SQLstring = null;
+let infomationNeeded = null;
+app.post('/submit-form-Disci_Docente'), async (req, res) => {
+    const {nome, cpf} = req.body
+    connection.query(SQLstring, infomationNeeded, (err, result) => {
+        return
+    })
+}
 app.post('/submit-form-register', async (req, res) => {
     const {nome , cpf} = req.body
-    let infomationNeeded = [nome, cpf]
-    let SQLstring;
+    infomationNeeded = [nome, cpf]
     let howManyDirectors = await connection.promise().query('SELECT COUNT(*) FROM DIRETOR')
     console.log(howManyDirectors);
     if(howManyDirectors[0].length > 0){
@@ -37,10 +47,9 @@ app.post('/submit-form-register', async (req, res) => {
         res.status(500).json({ message: 'Erro ao processar a requisição', error });
     }
 })
+
 app.post('/submit-form', async (req, res) => {
     const { nome, cpf, nasci, tipo } = req.body;
-    let SQLstring = null;
-    let infomationNeeded = null;
     try {
         switch(tipo){
             case 'diretor':

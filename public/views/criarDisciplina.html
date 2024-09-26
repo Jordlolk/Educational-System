@@ -90,11 +90,13 @@
         <section class="disciContent">
             <form action="" class="form">
                 <h3>Criar Disciplina</h3>
-                <label for="nomeDisci" id="disciplina">
+                <label for="nomeDisci" id="disciName">
                     Nome da Disciplina <input placeholder="Nome da disciplina" name="disciplina" type="text" id="nomeDisci">
+                    <p data-js="error"></p>
                 </label>
-                <label for="dataDisci" id="disciData">
-                    <input name="disciData" type="date" id="dataDisci">
+                <label for="dataDisci" id="disciDocente">
+                    CPF Docente<input placeholder="CPF do professor" name="disciData" type="text" id="cpfDocentDisci">
+                    <p data-js="error"></p>
                 </label>
                 <button type="submit">Criar</button>
             </form>
@@ -105,6 +107,7 @@
         <h4>Log</h4>
         <p id="errors"></p>
     </aside>
+    <script type="module" src="../js/criarDisciplinaDocente.js"></script>
     <script src="../js/profileIconEvent.js"></script>
 </body>
 </html>

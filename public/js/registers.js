@@ -6,21 +6,7 @@ const passWord = document.getElementById('senhaInput')
 let photo = document.getElementById('photo')
 const inputs = document.querySelectorAll('input')
 const login = document.getElementById('login')
-async function fetchBackEnd(body){
-  let rest = {...body}
-  try{
-    let response = await fetch('http://localhost:3000/submit-form-register', {
-    method : 'POST',
-    headers : {'Content-Type' : 'application/json'},
-    body : JSON.stringify(rest)
-  })
-    let data =  response
-    console.log(data.ok)
-  } catch(e) {
-    console.log(e.message);
-  }
-}
-console.log('ad');
+
 login.addEventListener('submit', (e) => {
   e.preventDefault()
   let isValid = true
