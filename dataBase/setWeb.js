@@ -2,7 +2,6 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import  {connection}  from '../dataBase/connection.js';
-
 // CALL EXPRESS LIB
 const app = express();
 app.use(express.json())? console.log('JSON iniciado') : console.log('Failed'); // // TRANSLATE DATA TO JSON. 
@@ -13,15 +12,32 @@ console.log("STATUS=ON; DATABASE:  "+ connection.config.database);
 // THE REST IS CATCHES FOR TREAT ERRORS.
 
 // update disciplina set cpf_docente = (select cpf from docente where id_docente = 1) where id_disciplina = 1;
-//
 let SQLstring = null;
 let infomationNeeded = null;
-app.post('/submit-form-Disci_Docente'), async (req, res) => {
-    const {nome, cpf} = req.body
-    connection.query(SQLstring, infomationNeeded, (err, result) => {
-        return
+let resultBD;
+
+const query = async (sql, params = []) => {
+     return new Promise((resolve, reject) => {
+        connection.query(sql, params, (err,res) => {
+            if(err){return reject(err)}
+            return resolve(res)
+        })
     })
 }
+
+app.post('/submit-form-disciplina', async (req, res) => {
+     SQLstring = 'SELECT * FROM docente'
+    try {
+        const result = await query(SQLstring)
+        let resultOfBd = result.map((infos, i) => { 
+            return infos.nome
+        })
+        res.status(200).json({message : 'Sucess!', ...resultOfBd})
+    } catch (error) {
+        console.log(error.message);
+    }
+})
+
 app.post('/submit-form-register', async (req, res) => {
     const {nome , cpf} = req.body
     infomationNeeded = [nome, cpf]
@@ -92,9 +108,10 @@ const port = 3000;
 app.use(express.static(publicPath));
 // CREATE THE ROOT PATH "/ "
 app.get('/', (req, res) => {
-    res.sendFile(path.join(viewsPath, 'alterarDirecao.html')); // SEND HTML FILE
+    res.sendFile(path.join(viewsPath, 'criarDisciplina.html')); // SEND HTML FILE
 });
 // INITIATE THE SEVER WITH THE PORT "3000"
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
+
