@@ -16,26 +16,26 @@ let SQLstring = null;
 let infomationNeeded = null;
 let resultBD;
 
-const query = async (sql, params = []) => {
+/* const query = async (sql, params = []) => {
      return new Promise((resolve, reject) => {
         connection.query(sql, params, (err,res) => {
             if(err){return reject(err)}
             return resolve(res)
         })
     })
-}
+} */
+/* SQLstring = 'SELECT * FROM docente'
+try {
+   const result = await query(SQLstring)
+   let resultOfBd = result.map((infos, i) => { 
+       return infos.nome
+   })
+   res.status(200).json({message : 'Sucess!', resultOfBd})
+} catch (error) {
+   console.log(error.message);
+} */
 
 app.post('/submit-form-disciplina', async (req, res) => {
-     SQLstring = 'SELECT * FROM docente'
-    try {
-        const result = await query(SQLstring)
-        let resultOfBd = result.map((infos, i) => { 
-            return infos.nome
-        })
-        res.status(200).json({message : 'Sucess!', ...resultOfBd})
-    } catch (error) {
-        console.log(error.message);
-    }
 })
 
 app.post('/submit-form-register', async (req, res) => {

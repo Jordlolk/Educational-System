@@ -30,8 +30,10 @@ async function fetchBackEnd(info){
       headers : {'Content-Type' : 'application/json'},
       body : JSON.stringify(data)
     })
-    let Response = await search.json()
-    console.log(Response);
+    /* let {resultOfBd} = await search.json()
+    console.log(resultOfBd.join(', ')) */
+    let response = await search.json()
+    console.log(response);
     } catch(e){
     console.log(e.message)
   }
