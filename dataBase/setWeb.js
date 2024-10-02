@@ -36,6 +36,13 @@ try {
 } */
 
 app.post('/submit-form-disciplina', async (req, res) => {
+    const {} = res.body
+    SQLstring = 'INSERT INTO disciplina(nome, cpf_docente) values(?,?);'
+    try {
+        connection.query(SQLstring,infomationNeeded)
+    } catch (error) {
+        
+    }
 })
 
 app.post('/submit-form-register', async (req, res) => {

@@ -3,6 +3,7 @@ const NomeDisciplina = document.getElementById('nomeDisci')
 const CpfDocente = document.getElementById('cpfDocentDisci')
 const Form = document.querySelector('.form')
 function verifyData(){
+  let isValid = true
   let validation = [
   {
     input: NomeDisciplina, 
@@ -11,15 +12,20 @@ function verifyData(){
   },
   {
     input: CpfDocente, 
-    condicao: () => CpfDocente.value === '' || parseInt(CpfDocente.value) === NaN,
+    condicao: () => !CpfDocente.value === '' || parseInt(CpfDocente.value) === NaN,
     error: 'CPF do docente inválido.'
   }
   ]
   validation.forEach((validations) => {
     if(validations.condicao()){
       errorAlert(validations.input.parentElement.children[1], validations.error)
+      isValid = false
     }
   })
+  if(!isValid){
+    return
+  }
+  return {disciplina : NomeDisciplina.value, cpfDocente : CpfDocente.value || null}
 }
 
 async function fetchBackEnd(info){
@@ -41,6 +47,7 @@ async function fetchBackEnd(info){
 
 Form.addEventListener('submit', (e) => {
   e.preventDefault()
-  verifyData()
-  fetchBackEnd()
+  let {disciplina, cpfDocente} = verifyData()
+  console.log(disciplina, cpfDocente);
+  //fetchBackEnd()
 })
