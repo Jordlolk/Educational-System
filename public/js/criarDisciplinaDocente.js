@@ -2,6 +2,7 @@ import {errorAlert, showLogError} from '../js/globalFunctions.js'
 const NomeDisciplina = document.getElementById('nomeDisci')
 const CpfDocente = document.getElementById('cpfDocentDisci')
 const Form = document.querySelector('.form')
+
 function verifyData(){
   let isValid = true
   let validation = [
@@ -40,14 +41,14 @@ async function fetchBackEnd(info){
     console.log(resultOfBd.join(', ')) */
     let response = await search.json()
     console.log(response);
-    } catch(e){
+  } catch(e){
     console.log(e.message)
   }
 }
 
+showLogError('Pesquisa realizada com sucesso!')
 Form.addEventListener('submit', (e) => {
   e.preventDefault()
-  let {disciplina, cpfDocente} = verifyData()
-  console.log(disciplina, cpfDocente);
-  //fetchBackEnd()
+  let info = verifyData()
+  fetchBackEnd()
 })

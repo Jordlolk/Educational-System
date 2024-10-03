@@ -30,18 +30,25 @@ try {
    let resultOfBd = result.map((infos, i) => { 
        return infos.nome
    })
-   res.status(200).json({message : 'Sucess!', resultOfBd})
+   res.status(200).json({message : 'Pesquisa realizada com sucesso!', resultOfBd})
 } catch (error) {
    console.log(error.message);
 } */
 
 app.post('/submit-form-disciplina', async (req, res) => {
-    const {} = res.body
+    const {nome,} = res.body
     SQLstring = 'INSERT INTO disciplina(nome, cpf_docente) values(?,?);'
     try {
-        connection.query(SQLstring,infomationNeeded)
+        connection.query(SQLstring,infomationNeeded, (err,res) => {
+            if(err){
+                res.status(500).json({message: "ERROR: "+err.message})
+            }
+            else{
+                res.status(200).json({message: 'Pesquisa realizada com sucesso!'})
+            }
+        })
     } catch (error) {
-        
+        res.status(500).json({message: error.message})
     }
 })
 
