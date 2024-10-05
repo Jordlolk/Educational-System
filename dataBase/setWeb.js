@@ -4,8 +4,7 @@ import { fileURLToPath } from 'url';
 import  {connection}  from '../dataBase/connection.js';
 // CALL EXPRESS LIB
 const app = express();
-app.use(express.json())? console.log('JSON iniciado') : console.log('Failed'); // // TRANSLATE DATA TO JSON. 
-console.log("STATUS=ON; DATABASE:  "+ connection.config.database);
+app.use(express.json())
 // THIS CODE ABOVE IS THE PART OF CODE THAT MAKES THE CONNECTION WITH SQL
 // FIRST IT VERIFY WHAT REQUESTION IT WILL RECEIVE, IF IT A "DIRETOR" DATA OR "ALUNO" DATA.
 // FOR WHICH ONE THE CODE TREATS THE USER´S ENTRANCE AFTER THIS RUNS THE SQL STRING.
@@ -35,20 +34,21 @@ try {
    console.log(error.message);
 } */
 
-app.post('/submit-form-disciplina', async (req, res) => {
-    const {nome,} = res.body
+app.post('/submit-form-disciplina', (req, res) => {
+    const {disciplina,cpfDocente} = req.body
     SQLstring = 'INSERT INTO disciplina(nome, cpf_docente) values(?,?);'
+    infomationNeeded = [disciplina, cpfDocente]
     try {
-        connection.query(SQLstring,infomationNeeded, (err,res) => {
+        connection.query(SQLstring,infomationNeeded, (err,result) => {
             if(err){
-                res.status(500).json({message: "ERROR: "+err.message})
+                res.status(500).json({message: 'Erro'})
             }
             else{
-                res.status(200).json({message: 'Pesquisa realizada com sucesso!'})
+                res.status(200).json({message : 'Dados inseridos com sucesso!'})
             }
         })
     } catch (error) {
-        res.status(500).json({message: error.message})
+        res.status(500).json({ message: 'Erro ao processar a requisição', error })
     }
 })
 
@@ -56,7 +56,6 @@ app.post('/submit-form-register', async (req, res) => {
     const {nome , cpf} = req.body
     infomationNeeded = [nome, cpf]
     let howManyDirectors = await connection.promise().query('SELECT COUNT(*) FROM DIRETOR')
-    console.log(howManyDirectors);
     if(howManyDirectors[0].length > 0){
         SQLstring = 'UPDATE diretor set nome = ?, cpf = ?'
     } else {
